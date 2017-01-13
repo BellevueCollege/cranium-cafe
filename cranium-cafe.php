@@ -44,9 +44,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 	// Exit if accessed directly
 	if ( ! defined( 'ABSPATH' ) ) exit;
 	
-	add_action( 'init', array( 'BSUCWP_Cranium_Cafe', 'init' ));
+	add_action( 'init', array( 'BCCranium_Cranium_Cafe', 'init' ));
 
-	class BSUCWP_Cranium_Cafe {
+	class BCCranium_Cranium_Cafe {
 
 		/**
 		* Init the class
@@ -66,14 +66,14 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		* Init function to register all used hooks
 		*
 		* @since 1.8
-		* @return BSUCWP_Cranium_Cafe
+		* @return BCCranium_Cranium_Cafe
 		*/
 		public function __construct() {
-			// global $bsucwp_custom_admin;
-			// $this->bsucwp = $bsucwp_custom_admin;
-			// if (method_exists($this->bsucwp, 'bsucwp_get_option')) $this->bsucwp_cranium_cafe = $this->bsucwp->bsucwp_get_option('bsucwp_cranium_cafe');
+			// global $bccranium_custom_admin;
+			// $this->bccranium = $bccranium_custom_admin;
+			// if (method_exists($this->bccranium, 'bccranium_get_option')) $this->bccranium_cranium_cafe = $this->bccranium->bccranium_get_option('bccranium_cranium_cafe');
 			
-			// if (!empty($this->bsucwp_cranium_cafe)) {
+			// if (!empty($this->bccranium_cranium_cafe)) {
 				add_shortcode( 'craniumcafe-user', 					array($this, 'add_cranium_cafe_user'));
 				add_shortcode( 'craniumcafe-group', 				array($this, 'add_cranium_cafe_group'));
 				add_action ( 'init', 								array($this, 'shortcode_ui_shortcode_register_user'), 99);
@@ -114,20 +114,20 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			//These are the defaults to use if they are not specified in the shortcode
 	 		$args = shortcode_atts(
 				array(
-					'cc_username' => ''
+					'username' => ''
 				), $atts );
 
 			$cranium_cafe_code = "";
-			if (array_key_exists('cc_username', $args)) {
-				$this->cc_username = $args["cc_username"];
+			if (array_key_exists('username', $args)) {
+				$this->username = $args["username"];
 
 				$cranium_cafe_code = '
-				<div id="cafeUser"><div class="tinymce-editor-only"><img src="/wp-content/plugins/bsu-custom-wordpress/assets/images/cranium-cafe/cranium-cafe-user-card.png"></div>
-				<a class="cafe-card" href="https://my.craniumcafe.com/'.$this->cc_username.'" data-username="'.$this->cc_username.'">Chat using Cranium Cafe</a>
+				<div id="cafeUser">
+				<a class="cafe-card" href="https://my.craniumcafe.com/'.$this->username.'" data-username="'.$this->username.'">Chat using Cranium Cafe</a>
 				</div>
 				';
 				// call the function that adds the CraniumCafe.init script below the external-cafe.js
-				add_action( 'wp_footer', 					array($this, 'bsucwp_cranium_cafe_user_init_footer_js' ), 100 );
+				add_action( 'wp_footer', 					array($this, 'bccranium_cranium_cafe_user_init_footer_js' ), 100 );
 				
 				return $cranium_cafe_code;
 			}
@@ -162,9 +162,9 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				</div>
 				';
 				// call the function that adds the CraniumCafe.init script below the external-cafe.js
-				add_action( 'wp_footer', 					array($this, 'bsucwp_cranium_cafe_group_init_footer_js' ), 100 );
+				add_action( 'wp_footer', 					array($this, 'bccranium_cranium_cafe_group_init_footer_js' ), 100 );
 				
-				$this->bsucwp_cranium_cafe_group_external_js();
+				$this->bccranium_cranium_cafe_group_external_js();
 				return $cranium_cafe_code;
 			}
 			return; 
@@ -229,7 +229,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			            'attrs' => array(
 			                array(
 			                    'label' => 'For a CraniumCafe User Card, please enter your CraniumCafe Username.',
-			                    'attr'  => 'cc_username',
+			                    'attr'  => 'username',
 			                    'type'  => 'text'
 			                ),
 			                
@@ -248,7 +248,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		* @since 1.8
 		* @return string
 		*/
-		function bsucwp_cranium_cafe_group_init_footer_js() {
+		function bccranium_cranium_cafe_group_init_footer_js() {
 			echo '
 			<script type="text/javascript" charset="utf-8">
 			    CraniumCafe.init({
@@ -269,7 +269,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		* @since 1.8
 		* @return string
 		*/
-		function bsucwp_cranium_cafe_user_init_footer_js() {
+		function bccranium_cranium_cafe_user_init_footer_js() {
 			echo '
 			<script type="text/javascript">!function(d, s, id) { var js, cjs = d.getElementsByTagName(s)[0]; if (!d.getElementById(id)) { js = d.createElement(s); js.id = id; js.src = "//platform.craniumcafe.com/cafe-card.js"; cjs.parentNode.insertBefore(js, cjs); } }(document, "script", "craniumcafe-card-kit");</script>
 			';
@@ -285,8 +285,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 		* @since 1.8
 		* @uses wp_enqueue_script
 		*/
-		function bsucwp_cranium_cafe_group_external_js() {
-		    wp_enqueue_script('bsucwp-cranium-cafe', '//platform.craniumcafe.com/external-cafe.js', array(), NULL, NULL );
+		function bccranium_cranium_cafe_group_external_js() {
+		    wp_enqueue_script('bccranium-cranium-cafe', '//platform.craniumcafe.com/external-cafe.js', array(), NULL, NULL );
 		}
 
 
