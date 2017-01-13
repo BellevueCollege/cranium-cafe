@@ -1,4 +1,14 @@
 <?php
+/*
+Plugin Name: Cranium Cafe Cards
+Plugin URI:  https://github.com/bellevuecollege/cranium-cafe-cards/
+Description: Displays 'contact' cards for Cranium Cafe using a shortcode. Based on code from Bemidji State University.
+Version:     v0.0.0.1
+Author:      Bellevue College ITS & Bemidji State University
+Author URI:  https://www.bellevuecollege.edu
+Text Domain: bccranium
+*/
+
 
 /**********************************************************************************
 ***********************************************************************************
