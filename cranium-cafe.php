@@ -158,7 +158,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 				$this->divid = $args["divid"];
 
 				$cranium_cafe_code = '
-				<div id="cafeUsers"><div class="tinymce-editor-only"><img src="/wp-content/plugins/bsu-custom-wordpress/assets/images/cranium-cafe/cranium-cafe-group-card.png"></div>
+				<div id="cafeUsers">
 				</div>
 				';
 				// call the function that adds the CraniumCafe.init script below the external-cafe.js
@@ -189,7 +189,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			            // Display label. String. Required.
 			            'label' => 'CraniumCafe Groups',
 			            // Icon/image for shortcode. Optional. src or dashicons-$icon. Defaults to carrot.
-			            'listItemImage' => '<img src="/wp-content/plugins/bsu-custom-wordpress/assets/images/cranium-cafe/cranium-cafe-logo-groups.jpg" >',
+			            'listItemImage' => '<img src="' . plugin_dir_url( __FILE__ ) . 'images/cranium-cafe-logo-groups.jpg" >',
 			            // Available shortcode attributes and default values. Required. Array.
 			            // Attribute model expects 'attr', 'type' and 'label'
 			            // Supported field types: text, checkbox, textarea, radio, select, email, url, number, and date.
@@ -222,7 +222,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 			            // Display label. String. Required.
 			            'label' => 'CraniumCafe Users',
 			            // Icon/image for shortcode. Optional. src or dashicons-$icon. Defaults to carrot.
-			            'listItemImage' => '<img src="/wp-content/plugins/bsu-custom-wordpress/assets/images/cranium-cafe/cranium-cafe-logo-users.jpg" >',
+			            'listItemImage' => '<img src="' . plugin_dir_url( __FILE__ ) . 'images/cranium-cafe-logo-users.jpg" >',
 			            // Available shortcode attributes and default values. Required. Array.
 			            // Attribute model expects 'attr', 'type' and 'label'
 			            // Supported field types: text, checkbox, textarea, radio, select, email, url, number, and date.
