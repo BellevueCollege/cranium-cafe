@@ -1,6 +1,6 @@
 === Cranium Cafe Cards ===
 Requires at least: 4.5
-Tested up to: 4.7
+Tested up to: 5.1
 
 Displays 'contact' cards for Cranium Cafe using a shortcode. Based on code from Bemidji State University.
 
@@ -22,5 +22,5 @@ While this code is still intact, it has not been tested fully.
 
 == Changelog ==
 
-= 0.0.0.1 =
+= 1 =
 Initial version of plugin
